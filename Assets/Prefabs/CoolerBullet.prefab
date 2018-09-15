@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4108945060002164}
   - component: {fileID: 212149791428614860}
   - component: {fileID: 58069785199160278}
-  - component: {fileID: 114000526021120522}
   - component: {fileID: 50003147319465510}
+  - component: {fileID: 114263610720791912}
   m_Layer: 9
-  m_Name: BasicBullet
+  m_Name: BasicBullet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,13 +72,13 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
---- !u!114 &114000526021120522
+--- !u!114 &114263610720791912
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,13 +86,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1003937116382374}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06b6fdd1cbd549dcae83fe7cd82c366c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d676cf52d23497d8c28f4ebd242bada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   DamageAmount: 1
   CanAttackPlayer: 1
-  Speed: 2
+  Speed: 5
   Angle: 0
+  TimeUntilSwitch: 0.3
+  Acceleration: 10
 --- !u!212 &212149791428614860
 SpriteRenderer:
   m_ObjectHideFlags: 1

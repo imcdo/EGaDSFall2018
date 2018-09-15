@@ -11,6 +11,8 @@ namespace Bullet
 		public int DamageAmount = 1;
 		public bool CanAttackPlayer = true;
 
+		private float _deathTimer = 1f;
+
 		private void Awake()
 		{
 			Body = GetComponent<Rigidbody2D>();
@@ -22,7 +24,7 @@ namespace Bullet
 			var layer = other.gameObject.layer;
 			if (layer == LayerMask.NameToLayer("Player"))
 			{
-				OnHitPlayer();
+				OnHitPlayer(other);
 			}
 			else if (layer == LayerMask.NameToLayer("Enemy"))
 			{
@@ -34,8 +36,11 @@ namespace Bullet
 			}
 		}
 
-		private void OnHitPlayer()
+		private void OnHitPlayer(Collider2D other)
 		{
+			var player = other.GetComponent<Player>();
+			if (player != null)
+				player.damage(DamageAmount);
 			Destroy(gameObject);
 		}
 
@@ -49,10 +54,14 @@ namespace Bullet
 			CanAttackPlayer = !CanAttackPlayer;
 		}
 
-		private IEnumerator OnTimePass()
+		protected virtual void Update()
 		{
-			yield return new WaitForSeconds(2f);
-			Destroy(gameObject);
+			var pos = Camera.main.WorldToViewportPoint(transform.position);
+			if (0f <= pos.x && pos.x <= 1f && 0 <= pos.y && pos.y <= 1f)
+				return;
+			_deathTimer -= Time.deltaTime;
+			if (_deathTimer <= 0)
+				Destroy(gameObject);
 		}
 
 		private void Reset()

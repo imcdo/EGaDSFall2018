@@ -5,7 +5,7 @@ namespace Bullet
 {
 	public class VelBullet : BaseBullet
 	{
-		public float Speed;
+		public float Speed = 4;
 
 		[Tooltip("In degrees")]
 		public float Angle;
@@ -21,8 +21,7 @@ namespace Bullet
 
 		private void LateUpdate()
 		{
-			Body.MovePosition((Vector2) transform.position +
-			                  Vector2Utils.CreateVector(Speed * Time.deltaTime, Angle * Mathf.Deg2Rad));
+			Body.velocity = Vector2Utils.CreateVector(Speed, Angle * Mathf.Deg2Rad);
 		}
 	}
 }
