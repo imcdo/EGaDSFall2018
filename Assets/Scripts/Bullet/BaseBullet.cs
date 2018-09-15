@@ -7,6 +7,7 @@ namespace Bullet
 	public class BaseBullet : MonoBehaviour
 	{
 		protected Rigidbody2D Body;
+		public int DamageAmount = 1;
 		public bool CanAttackPlayer = true;
 
 		private void Awake()

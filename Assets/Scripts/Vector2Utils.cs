@@ -30,7 +30,6 @@ namespace CloudCanards.Util
 		/// </summary>
 		/// <param name="vector">vector to get perp from</param>
 		/// <returns>perp vector</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Vector2 Perp(this Vector2 vector)
 		{
 			return new Vector2(-vector.y, vector.x);
@@ -41,7 +40,6 @@ namespace CloudCanards.Util
 		/// </summary>
 		/// <param name="vector">vector to get angle from</param>
 		/// <returns>An angle, θ, measured in radians, such that -π≤θ≤π</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static float GetAngle(this Vector2 vector)
 		{
 			return Mathf.Atan2(vector.y, vector.x);
@@ -66,13 +64,13 @@ namespace CloudCanards.Util
 			return Mathf.Abs(a.x - b.x) <= tolerance && Mathf.Abs(a.y - b.y) <= tolerance;
 		}
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+
 		public static float Dot(this Vector2 a, Vector2 b)
 		{
 			return Vector2.Dot(a, b);
 		}
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+
 		public static float Cross(this Vector2 a, Vector2 b)
 		{
 			return a.x * b.y - a.y * b.x;
@@ -84,7 +82,6 @@ namespace CloudCanards.Util
 		/// <param name="a">vector a</param>
 		/// <param name="b">vector b</param>
 		/// <returns></returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Vector2 Projection(this Vector2 a, Vector2 b)
 		{
 			return Vector2.Dot(a, b) / Vector2.Dot(b, b) * b;
@@ -96,7 +93,6 @@ namespace CloudCanards.Util
 		/// <param name="a">vector a</param>
 		/// <param name="b">vector b</param>
 		/// <returns>magnitude and sign</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static float ScalarProjection(this Vector2 a, Vector2 b)
 		{
 			return Vector2.Dot(a, b) / b.magnitude;
@@ -108,7 +104,6 @@ namespace CloudCanards.Util
 		/// <param name="a">vector a</param>
 		/// <param name="b">vector b</param>
 		/// <returns></returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Vector2 Rejection(this Vector2 a, Vector2 b)
 		{
 			return a - a.Projection(b);
@@ -120,7 +115,6 @@ namespace CloudCanards.Util
 		/// <param name="radius">radius in world units</param>
 		/// <param name="angle">angle in radians</param>
 		/// <returns></returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Vector2 CreateVector(float radius, float angle)
 		{
 			return new Vector2(radius * Mathf.Cos(angle), radius * Mathf.Sin(angle));
@@ -132,7 +126,6 @@ namespace CloudCanards.Util
 		/// <param name="a">vector</param>
 		/// <param name="b">vector</param>
 		/// <returns>larger vector</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Vector2 Max(Vector2 a, Vector2 b)
 		{
 			return a.sqrMagnitude > b.sqrMagnitude ? a : b;
@@ -172,19 +165,18 @@ namespace CloudCanards.Util
 		/// <param name="vector2">vector to normalize</param>
 		/// <param name="magnitudeSq">squared magnitude of this vector</param>
 		/// <returns>normalized magnitude</returns>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Vector2 DangerouslyNormalize(this Vector2 vector2, float magnitudeSq)
 		{
 			return vector2 / Mathf.Sqrt(magnitudeSq);
 		}
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+
 		public static float SqrDistance(Vector2 a, Vector2 b)
 		{
 			return (a - b).sqrMagnitude;
 		}
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+
 		public static Vector2 SetMagnitude(this Vector2 vector, float magnitude)
 		{
 			return vector.normalized * magnitude;
@@ -205,19 +197,18 @@ namespace CloudCanards.Util
 		/// <summary>
 		/// Checks whether v is valid (not NaN)
 		/// </summary>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool IsValid(this Vector2 v)
 		{
 			return !float.IsNaN(v.x) && !float.IsNaN(v.y);
 		}
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+
 		public static Vector2 Abs(this Vector2 v)
 		{
 			return new Vector2(Mathf.Abs(v.x), Mathf.Abs(v.y));
 		}
 
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+
 		public static Vector2 Sign(this Vector2 v)
 		{
 			return new Vector2(Mathf.Sign(v.x), Mathf.Sign(v.y));
