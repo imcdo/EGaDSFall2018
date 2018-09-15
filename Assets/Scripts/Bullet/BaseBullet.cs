@@ -65,8 +65,9 @@ namespace Bullet
 
 		private void Reset()
 		{
-			GetComponent<Collider2D>().isTrigger = true;
+			GetComponent<Collider2D>().isTrigger = false;
 			GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+			GetComponent<Rigidbody2D>().useFullKinematicContacts = true;
 			gameObject.layer = LayerMask.NameToLayer("Bullet");
 		}
 	}

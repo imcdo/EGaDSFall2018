@@ -10,6 +10,13 @@ namespace Bullet
 		[Tooltip("In degrees")]
 		public float Angle;
 
+		private void OnCollisionEnter2D(Collision2D other)
+		{
+			Vector2 reflected = Vector3.Reflect(Vector2Utils.CreateVector(1, Angle * Mathf.Deg2Rad),
+				other.GetContact(0).normal);
+			Angle = reflected.GetAngle() * Mathf.Rad2Deg;
+		}
+
 		protected override void OnHitShield()
 		{
 			base.OnHitShield();
