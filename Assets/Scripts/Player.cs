@@ -6,7 +6,7 @@ public class Player : MonoBehaviour {
 
     Rigidbody2D rb;
     [SerializeField]float speed = 20;
-    [SerializeField] GameObject lifeBar;
+    [SerializeField] LifeHearts lifeBar;
     public int startinghealth = 50;
     public int currenthealth;
     bool isDead;
@@ -15,7 +15,7 @@ public class Player : MonoBehaviour {
 	void Start () {
         rb = gameObject.GetComponent<Rigidbody2D>();
         currenthealth = startinghealth;
-        lifeBar.GetComponent<LifeHearts>().updateLifeUI(currenthealth);
+        lifeBar.updateLifeUI(currenthealth);
         isDead = false;
 	}
 	
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour {
             isDead = true;
             
         }
-        lifeBar.GetComponent<LifeHearts>().updateLifeUI(currenthealth);
+        lifeBar.updateLifeUI(currenthealth);
     }
     private void FixedUpdate()
     {
