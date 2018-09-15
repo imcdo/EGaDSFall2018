@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace BulletPattern
 {
-    public class SpiralBullet : MonoBehaviour
+    public class ThreeBullets : MonoBehaviour
     {
 
         [Tooltip("In Seconds")]
-        [Range(0,1)]
+        [Range(0, 1)]
         public float duration = 1;
         public int numBullets = 16;
         [SerializeField]
@@ -17,7 +17,7 @@ namespace BulletPattern
         float counter = 0;
         bool b = true;
         public float speed = 5.0f;
-        float lastAngle = 0.0f;
+        float lastAngle = 45.0f;
 
         // Use this for initialization
         void Start()
@@ -35,17 +35,19 @@ namespace BulletPattern
             {
                 counter -= duration;
 
-                
-                var bullet = (GameObject)Instantiate(Bullet, new Vector3(0, 0, 0), Quaternion.identity);
-                var a = bullet.GetComponent<VelBullet>();
-                a.Speed = speed;
-                a.Angle = lastAngle += delta;
-                if (a.Angle > 360)
+                for(int i = 1; i <= 3; i++)
                 {
-                    a.Angle -= 360;
+                    var bullet = (GameObject)Instantiate(Bullet, new Vector3(0, 0, 0), Quaternion.identity);
+                    var a = bullet.GetComponent<VelBullet>();
+                    a.Speed = speed;
+                    a.Angle = lastAngle += delta;
+                    if (a.Angle > 360)
+                    {
+                        a.Angle -= 360;
+                    }
                 }
                 
-
+                
             }
 
 
