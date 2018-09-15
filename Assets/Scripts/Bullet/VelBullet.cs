@@ -12,6 +12,9 @@ namespace Bullet
 
 		private void OnCollisionEnter2D(Collision2D other)
 		{
+			if (!other.gameObject.CompareTag("Reflective"))
+				return;
+
 			Vector2 reflected = Vector3.Reflect(Vector2Utils.CreateVector(1, Angle * Mathf.Deg2Rad),
 				other.GetContact(0).normal);
 			Angle = reflected.GetAngle() * Mathf.Rad2Deg;
