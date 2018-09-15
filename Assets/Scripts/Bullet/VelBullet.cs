@@ -12,9 +12,10 @@ namespace Bullet
 
 		protected override void OnHitShield()
 		{
-			var playerAngle = 0f; //todo
-			var delta = AngleUtils.Distance(playerAngle, Angle);
-			Angle = playerAngle - delta;
+			base.OnHitShield();
+			var shieldAngle = 0f; //todo
+			var delta = AngleUtils.Distance(shieldAngle, Angle);
+			Angle = shieldAngle - delta + 180f;
 		}
 
 		private void LateUpdate()

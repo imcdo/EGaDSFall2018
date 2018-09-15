@@ -12,6 +12,7 @@ namespace Bullet
 		private void Awake()
 		{
 			Body = GetComponent<Rigidbody2D>();
+			
 		}
 
 		private void OnTriggerEnter2D(Collider2D other)
@@ -43,7 +44,7 @@ namespace Bullet
 
 		protected virtual void OnHitShield()
 		{
-			
+			CanAttackPlayer = !CanAttackPlayer;
 		}
 
 		private void Reset()
