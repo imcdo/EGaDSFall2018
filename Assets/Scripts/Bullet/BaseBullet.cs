@@ -43,7 +43,7 @@ namespace Bullet
 
 		protected virtual void OnHitShield()
 		{
-			
+			CanAttackPlayer = !CanAttackPlayer;
 		}
 
 		private void Reset()

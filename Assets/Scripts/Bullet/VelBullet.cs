@@ -12,6 +12,7 @@ namespace Bullet
 
 		protected override void OnHitShield()
 		{
+			base.OnHitShield();
 			var playerAngle = 0f; //todo
 			var delta = AngleUtils.Distance(playerAngle, Angle);
 			Angle = playerAngle - delta;
