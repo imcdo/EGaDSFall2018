@@ -6,10 +6,15 @@ public class Player : MonoBehaviour {
 
     Rigidbody2D rb;
     [SerializeField]float speed = 20;
+    public int startinghealth = 50;
+    public int currenthealth;
+    bool isDead;
 
 	// Use this for initialization
 	void Start () {
         rb = gameObject.GetComponent<Rigidbody2D>();
+        currenthealth = startinghealth;
+        isDead = false;
 	}
 	
 	// Update is called once per frame
@@ -17,9 +22,18 @@ public class Player : MonoBehaviour {
 
         rb.velocity = new Vector3(Input.GetAxis("Horizontal") * speed,
             Input.GetAxis("Vertical") * speed, 0);
-
+      
 	}
 
+    public void damage (int amount)
+    {
+        currenthealth -= amount;
+        if(currenthealth <= 0 && !isDead)
+        {
+            isDead = true;
+            
+        }
+    }
     private void FixedUpdate()
     {
         
