@@ -24,9 +24,11 @@ public class LifeHearts : MonoBehaviour {
 
     public void updateLifeUI(int life)
     {
-        int numHearts = life / lifePerHeart + ((life % lifePerHeart == 0)? 0:1);
-        float lastHeartOpacity = life % lifePerHeart;
 
+        int numHearts = life / lifePerHeart + ((life % lifePerHeart == 0)? 0:1);
+        float lastHeartOpacity = ((life %lifePerHeart == 0)? lifePerHeart * 1f : life % lifePerHeart * 1f) / lifePerHeart;
+
+        Debug.Log("Heartop: " + lastHeartOpacity + " | NumHearts: " + numHearts);    
 
         int dif = numHearts - prevNumHearts;
         if (dif == 0) { }
@@ -54,7 +56,7 @@ public class LifeHearts : MonoBehaviour {
 
         //update last heart opacity
         GameObject lastHeart = hearts.Peek();
-        lastHeart.GetComponent<Image>().color = new Color(1f, 1f, 1f, lastHeartOpacity);
+        lastHeart.GetComponent<Image>().color = new Color(255,255,255, lastHeartOpacity);
 
         prevNumHearts = numHearts;
         
