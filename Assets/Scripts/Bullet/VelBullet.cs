@@ -16,6 +16,7 @@ namespace Bullet
 			var shieldAngle = 0f; //todo
 			var delta = AngleUtils.Distance(shieldAngle, Angle);
 			Angle = shieldAngle - delta + 180f;
+			
 		}
 
 		private void LateUpdate()

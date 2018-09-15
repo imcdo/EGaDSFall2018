@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Bullet
 {
@@ -48,8 +49,15 @@ namespace Bullet
 			CanAttackPlayer = !CanAttackPlayer;
 		}
 
+		private IEnumerator OnTimePass()
+		{
+			yield return new WaitForSeconds(2f);
+			Destroy(gameObject);
+		}
+
 		private void Reset()
 		{
+			GetComponent<Collider2D>().isTrigger = true;
 			GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 			gameObject.layer = LayerMask.NameToLayer("Bullet");
 		}
