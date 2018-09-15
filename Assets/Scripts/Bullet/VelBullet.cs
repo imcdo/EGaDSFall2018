@@ -5,10 +5,17 @@ namespace Bullet
 {
 	public class VelBullet : BaseBullet
 	{
-		public float Speed;
+		public float Speed = 4;
 
 		[Tooltip("In degrees")]
 		public float Angle;
+
+		private void OnCollisionEnter2D(Collision2D other)
+		{
+			Vector2 reflected = Vector3.Reflect(Vector2Utils.CreateVector(1, Angle * Mathf.Deg2Rad),
+				other.GetContact(0).normal);
+			Angle = reflected.GetAngle() * Mathf.Rad2Deg;
+		}
 
 		protected override void OnHitShield()
 		{
@@ -21,8 +28,7 @@ namespace Bullet
 
 		private void LateUpdate()
 		{
-			Body.MovePosition((Vector2) transform.position +
-			                  Vector2Utils.CreateVector(Speed * Time.deltaTime, Angle * Mathf.Deg2Rad));
+			Body.velocity = Vector2Utils.CreateVector(Speed, Angle * Mathf.Deg2Rad);
 		}
 	}
 }

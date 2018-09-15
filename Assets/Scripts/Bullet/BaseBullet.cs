@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Bullet
 {
@@ -10,6 +9,8 @@ namespace Bullet
 		protected Rigidbody2D Body;
 		public int DamageAmount = 1;
 		public bool CanAttackPlayer = true;
+
+		private float _deathTimer = 1f;
 
 		private void Awake()
 		{
@@ -22,7 +23,7 @@ namespace Bullet
 			var layer = other.gameObject.layer;
 			if (layer == LayerMask.NameToLayer("Player"))
 			{
-				OnHitPlayer();
+				OnHitPlayer(other);
 			}
 			else if (layer == LayerMask.NameToLayer("Enemy"))
 			{
@@ -34,8 +35,11 @@ namespace Bullet
 			}
 		}
 
-		private void OnHitPlayer()
+		private void OnHitPlayer(Collider2D other)
 		{
+			var player = other.GetComponent<Player>();
+			if (player != null)
+				player.damage(DamageAmount);
 			Destroy(gameObject);
 		}
 
@@ -49,16 +53,21 @@ namespace Bullet
 			CanAttackPlayer = !CanAttackPlayer;
 		}
 
-		private IEnumerator OnTimePass()
+		protected virtual void Update()
 		{
-			yield return new WaitForSeconds(2f);
-			Destroy(gameObject);
+			var pos = Camera.main.WorldToViewportPoint(transform.position);
+			if (0f <= pos.x && pos.x <= 1f && 0 <= pos.y && pos.y <= 1f)
+				return;
+			_deathTimer -= Time.deltaTime;
+			if (_deathTimer <= 0)
+				Destroy(gameObject);
 		}
 
 		private void Reset()
 		{
-			GetComponent<Collider2D>().isTrigger = true;
+			GetComponent<Collider2D>().isTrigger = false;
 			GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+			GetComponent<Rigidbody2D>().useFullKinematicContacts = true;
 			gameObject.layer = LayerMask.NameToLayer("Bullet");
 		}
 	}
