@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using CloudCanards.Util;
+ 
 
 public class Player : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
 	[SerializeField]
 	LifeHearts lifeBar;
 
+    Animator anim;
 	public int startinghealth = 50;
 	public int currenthealth;
 	bool isDead;
@@ -20,6 +22,7 @@ public class Player : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+        anim = gameObject.GetComponent<Animator>();
 		rb = gameObject.GetComponent<Rigidbody2D>();
 		currenthealth = startinghealth;
 		lifeBar.updateLifeUI(currenthealth);
@@ -31,7 +34,9 @@ public class Player : MonoBehaviour
 	{
 		rb.velocity = new Vector3(Input.GetAxis("Horizontal") * speed,
 			Input.GetAxis("Vertical") * speed, 0);
-        if (rb.velocity.magnitude != 0)
+        float mag = rb.velocity.magnitude;
+        anim.SetFloat("mag", mag);
+        if (mag != 0)
             transform.eulerAngles = new Vector3(0, 0, rb.velocity.GetAngle() * Mathf.Rad2Deg - 90);
     }
 
