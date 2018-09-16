@@ -128,6 +128,7 @@ namespace Bullet
 			bullet.transform.position = position;
 			bullet.GetComponent<SpriteRenderer>().sprite = sprite;
 			bullet.GetComponent<CircleCollider2D>().radius = radius;
+            //bullet.GetComponent<Transform>().localScale = bullet.GetComponent<Transform>().localScale * radius * 10;
 			bullet.CanDamagePlayer = true;
 			bullet.Speed = speed;
 			bullet.Angle = angle;

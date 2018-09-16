@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Reflective
+  - SM
   layers:
   - Default
   - TransparentFX

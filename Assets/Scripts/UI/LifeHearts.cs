@@ -36,9 +36,11 @@ public class LifeHearts : MonoBehaviour {
             //lost life
             for (int i = dif; i < 0; i++)
             {
-                GameObject oldHeart = hearts.Pop();
+                if (hearts.Count > 0) { 
+                    GameObject oldHeart = hearts.Pop();
                 Destroy(oldHeart);
                 dif++;
+                }
             }
         }
         else
@@ -53,10 +55,16 @@ public class LifeHearts : MonoBehaviour {
         }
 
         //update last heart opacity
-        GameObject lastHeart = hearts.Peek();
-        lastHeart.GetComponent<Image>().color = new Color(255,255,255, lastHeartOpacity);
+        if (hearts.Count > 0)
+        {
+            GameObject lastHeart = hearts.Peek();
+            lastHeart.GetComponent<Image>().color = new Color(255, 255, 255, lastHeartOpacity);
 
-        prevNumHearts = numHearts;
+            prevNumHearts = numHearts;
+        }
+
+       
         
     }
+
 }

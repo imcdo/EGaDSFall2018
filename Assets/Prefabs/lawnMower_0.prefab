@@ -120,7 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 20
   Speed: 4
-  pointB: {x: 0, y: 0, z: 0}
+  pointB: {x: 20, y: 20, z: 0}
 --- !u!212 &212404489300839142
 SpriteRenderer:
   m_ObjectHideFlags: 1
