@@ -6,7 +6,7 @@ using CloudCanards.Util;
 
 namespace BulletPattern
 {
-    public class ExplodeBullet : MonoBehaviour
+    public class AlternatingBullet : MonoBehaviour
     {
 
         [Tooltip("In Seconds")]
@@ -20,6 +20,7 @@ namespace BulletPattern
         float lastAngle = 0.0f;
         private Vector2 pos;
         public BulletType Bullet;
+        public BulletType firstBullet;
         // Use this for initialization
         void Start()
         {
@@ -58,8 +59,8 @@ namespace BulletPattern
                 } */
                 if (b)
                 {
-                    BaseBullet.Create(Bullet, transform.position, diffAngle);
-
+                    BaseBullet.Create(firstBullet, transform.position, diffAngle);
+                    
                     
                 }
 
