@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   lifeBar: {fileID: 0}
-  startinghealth: 50
+  startinghealth: 100
   currenthealth: 0
 --- !u!212 &212653353405928106
 SpriteRenderer:
