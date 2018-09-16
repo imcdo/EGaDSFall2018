@@ -12,8 +12,7 @@ namespace BulletPattern
         [Range(0,1)]
         public float duration = 1;
         public int numBullets = 16;
-        [SerializeField]
-        Object Bullet;
+        public BulletType Bullet;
         float counter = 0;
         bool b = true;
         public float speed = 5.0f;
@@ -35,15 +34,9 @@ namespace BulletPattern
             {
                 counter -= duration;
 
+                BaseBullet.Create(Bullet, transform.position, lastAngle);
+                lastAngle += delta;
                 
-                var bullet = (GameObject)Instantiate(Bullet, transform.position, Quaternion.identity);
-                var a = bullet.GetComponent<VelBullet>();
-                a.Speed = speed;
-                a.Angle = lastAngle += delta;
-                if (a.Angle > 360)
-                {
-                    a.Angle -= 360;
-                }
                 
 
             }

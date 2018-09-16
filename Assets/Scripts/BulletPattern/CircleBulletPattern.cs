@@ -11,12 +11,11 @@ namespace BulletPattern
         [Tooltip("In Seconds")]
         public float duration = 1;
         public int numBullets = 16;
-        [SerializeField]
-        Object Bullet;
+        public BulletType Bullet;
         float counter = 0;
         bool b = true;
         public float speed = 5.0f;
-
+        public float angle = 0.0f;
         // Use this for initialization
         void Start()
         {
@@ -28,6 +27,7 @@ namespace BulletPattern
         {
             
             float delta = (360.0f / numBullets);
+            
             counter += Time.deltaTime;
             if (counter > duration)
             {
@@ -35,16 +35,14 @@ namespace BulletPattern
 
                 for (int i = 1; i <= numBullets; i++)
                 {
-                    var bullet = (GameObject)Instantiate(Bullet, transform.position, Quaternion.identity);
-                    var a = bullet.GetComponent<VelBullet>();
-                    a.Speed = speed;
+                    BaseBullet.Create(Bullet, transform.position, angle);
                     if (b)
                     {
-                        a.Angle = i * delta + (delta / 2);
+                        angle = i * delta + (delta / 2);
                     }
                     else
                     {
-                        a.Angle = i * delta;
+                        angle = i * delta;
                     }
                 }
                 b = !b;

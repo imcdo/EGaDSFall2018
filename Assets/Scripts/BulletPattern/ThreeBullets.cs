@@ -12,8 +12,7 @@ namespace BulletPattern
         [Range(0, 1)]
         public float duration = 1;
         public int numBullets = 16;
-        [SerializeField]
-        Object Bullet;
+        public BulletType Bullet;
         float counter = 0;
         bool b = true;
         public float speed = 5.0f;
@@ -56,12 +55,9 @@ namespace BulletPattern
 
         void shootsBullet(float angle)
         {
-            
-            var bullet = (GameObject)Instantiate(Bullet, transform.position, Quaternion.identity);
-            var a = bullet.GetComponent<VelBullet>();
-            a.Speed = speed;
-            a.Angle = angle;
-            
+
+            BaseBullet.Create(Bullet, transform.position, angle);
+
 
         }
 
