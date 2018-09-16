@@ -11,8 +11,10 @@ public class BasicEnemy : MonoBehaviour {
     Rigidbody2D rb;
     Transform target;
 
-	// Use this for initialization
-	void Start () {
+    public static object Instance { get; internal set; }
+
+    // Use this for initialization
+    void Start () {
         target = Player.Instance.gameObject.transform;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
