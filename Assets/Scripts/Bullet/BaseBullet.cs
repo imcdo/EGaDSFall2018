@@ -181,6 +181,6 @@ namespace Bullet
 			return bullet;
 		}
 
-		private static readonly Dictionary<Type, List<BaseBullet>> Pool = new Dictionary<Type, List<BaseBullet>>();
+		public static readonly Dictionary<Type, List<BaseBullet>> Pool = new Dictionary<Type, List<BaseBullet>>();
 	}
 }

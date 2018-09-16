@@ -60,7 +60,7 @@ public class Shield : MonoBehaviour
 		}
 
 		mouse_pos = Input.mousePosition;
-		if ((Vector2) mouse_pos == _prevMousePos)
+		if (1 == 1 || ((Vector2) mouse_pos).AlmostEqual(_prevMousePos))
 		{
 			var joystick = new Vector2(Input.GetAxis("JoystickX"), Input.GetAxis("JoystickY"));
 			if (joystick.sqrMagnitude > 0.01f)
@@ -69,6 +69,7 @@ public class Shield : MonoBehaviour
 				base.transform.rotation = Quaternion.Euler(0, 0, angle);
 			}
 
+			base.transform.rotation = Quaternion.Euler(0, 0, angle);
 			return;
 		}
 		mouse_pos.z = 0;
