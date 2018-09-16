@@ -10,8 +10,6 @@ public class ExplodingBullet : MonoBehaviour
     public int numBullets = 16;
     public BulletType Bullet;
     float counter = 0f;
-    public float speed = 5.0f;
-    public float angle = 0f;
     private void Start()
     {
         

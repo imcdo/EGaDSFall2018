@@ -53,9 +53,11 @@ public class Player : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-	}
+       
+    }
 
-	private void Awake()
+   
+    private void Awake()
 	{
 		Instance = this;
 	}

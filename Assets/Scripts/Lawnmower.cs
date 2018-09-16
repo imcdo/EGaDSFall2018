@@ -5,19 +5,37 @@ using UnityEngine;
 
 public class Lawnmower : MonoBehaviour
 {
-    public float Speed = 4;
-
+    Vector3 startposition;
+    Rigidbody2D body;
+    [SerializeField] float distance = 20;
     void Start()
     {
+        startposition = transform.position;
         var angle = transform.eulerAngles.z;
 
-        var body = GetComponent<Rigidbody2D>();
+        body = GetComponent<Rigidbody2D>();
         body.velocity = Vector2Utils.CreateVector(Speed, angle * Mathf.Deg2Rad);
 
+    }
+    public float Speed = 4;
 
+    public Vector3 pointB;
+
+    private void Update()
+    {
+       if ((transform.position - startposition).magnitude  > distance)
+        {
+            body.velocity = body.velocity * -1;
+        }
+   
     }
 
+
+
+
+
 }
+
 
 
 
