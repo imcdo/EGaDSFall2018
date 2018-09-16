@@ -15,7 +15,6 @@ namespace BulletPattern
         float counter = 0;
         bool b = true;
         public float speed = 5.0f;
-        public float angle = 0.0f;
         // Use this for initialization
         void Start()
         {
@@ -35,7 +34,7 @@ namespace BulletPattern
 
                 for (int i = 1; i <= numBullets; i++)
                 {
-                    BaseBullet.Create(Bullet, transform.position, angle);
+                    float angle;
                     if (b)
                     {
                         angle = i * delta + (delta / 2);
@@ -44,6 +43,7 @@ namespace BulletPattern
                     {
                         angle = i * delta;
                     }
+                    BaseBullet.Create(Bullet, transform.position, angle);
                 }
                 b = !b;
 

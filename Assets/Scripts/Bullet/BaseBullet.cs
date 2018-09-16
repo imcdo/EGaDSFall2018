@@ -40,16 +40,20 @@ namespace Bullet
 		{
 			var player = other.GetComponent<Player>();
 			if (player != null && CanDamagePlayer)
+			{
 				player.damage(DamageAmount);
-			DestroySelf();
+				DestroySelf();
+			}
 		}
 
 		private void OnHitEnemy(Collider2D other)
 		{
 			var enemy = other.GetComponent<BasicEnemy>();
 			if (enemy != null && !CanDamagePlayer)
+			{
 				enemy.DamageEnemy(DamageAmount);
-			DestroySelf();
+				DestroySelf();
+			}
 		}
 
 		protected virtual void OnHitShield()
@@ -85,7 +89,7 @@ namespace Bullet
 			Pool[type].Add(this);
 		}
 
-		private static VelBullet VelBullet(Vector2 position, Sprite sprite, float speed, float angle, int damage)
+		private static VelBullet VelBullet(Vector2 position, float radius, Sprite sprite, float speed, float angle, int damage)
 		{
 			if (!Pool.ContainsKey(typeof(VelBullet)))
 				Pool.Add(typeof(VelBullet), new List<BaseBullet>());
@@ -111,6 +115,7 @@ namespace Bullet
 
 			bullet.transform.position = position;
 			bullet.GetComponent<SpriteRenderer>().sprite = sprite;
+			bullet.GetComponent<CircleCollider2D>().radius = radius;
 			bullet.Speed = speed;
 			bullet.Angle = angle;
 			bullet.DamageAmount = damage;
@@ -123,14 +128,14 @@ namespace Bullet
 		{
 			if (bullet.Cooler)
 			{
-				return SwitchVelBullet(position, bullet.Sprite, bullet.Speed, angle, bullet.DamageAmount,
+				return SwitchVelBullet(position, bullet.Radius, bullet.Sprite, bullet.Speed, angle, bullet.DamageAmount,
 					bullet.TimeUntilSwitch, bullet.Acceleration);
 			}
 
-			return VelBullet(position, bullet.Sprite, bullet.Speed, angle, bullet.DamageAmount);
+			return VelBullet(position, bullet.Radius, bullet.Sprite, bullet.Speed, angle, bullet.DamageAmount);
 		}
 
-		private static SwitchingVelBullet SwitchVelBullet(Vector2 position, Sprite sprite, float speed, float angle,
+		private static SwitchingVelBullet SwitchVelBullet(Vector2 position, float radius, Sprite sprite, float speed, float angle,
 			int damage, float timeUntilSwitch = 0.5f, float acceleration = 10f)
 		{
 			if (!Pool.ContainsKey(typeof(SwitchingVelBullet)))
@@ -157,6 +162,7 @@ namespace Bullet
 
 			bullet.transform.position = position;
 			bullet.GetComponent<SpriteRenderer>().sprite = sprite;
+			bullet.GetComponent<CircleCollider2D>().radius = radius;
 			bullet.Speed = speed;
 			bullet.Angle = angle;
 			bullet.DamageAmount = damage;
