@@ -18,7 +18,8 @@ namespace BulletPattern
         bool b = true;
         public float speed = 5.0f;
         float lastAngle = 0.0f;
-
+        [Range(0,360)]
+        public float delta = 30.0f;
         // Use this for initialization
         void Start()
         {
@@ -28,15 +29,14 @@ namespace BulletPattern
         // Update is called once per frame
         void Update()
         {
-
-            float delta = (360.0f / numBullets);
+            
             counter += Time.deltaTime;
             if (counter > duration)
             {
                 counter -= duration;
 
                 
-                var bullet = (GameObject)Instantiate(Bullet, new Vector3(0, 0, 0), Quaternion.identity);
+                var bullet = (GameObject)Instantiate(Bullet, transform.position, Quaternion.identity);
                 var a = bullet.GetComponent<VelBullet>();
                 a.Speed = speed;
                 a.Angle = lastAngle += delta;

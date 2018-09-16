@@ -35,7 +35,7 @@ namespace BulletPattern
 
                 for (int i = 1; i <= numBullets; i++)
                 {
-                    var bullet = (GameObject)Instantiate(Bullet, new Vector3(0, 0, 0), Quaternion.identity);
+                    var bullet = (GameObject)Instantiate(Bullet, transform.position, Quaternion.identity);
                     var a = bullet.GetComponent<VelBullet>();
                     a.Speed = speed;
                     if (b)

@@ -27,7 +27,6 @@ namespace BulletPattern
         // Update is called once per frame
         void Update()
         {
-
             float delta = 10.0f;
             counter += Time.deltaTime;
             if (counter > duration)
@@ -36,7 +35,7 @@ namespace BulletPattern
 
                 for (int i = 1; i <= 10; i++)
                 {
-                    var bullet = (GameObject)Instantiate(Bullet, new Vector3(0, 0, 0), Quaternion.identity);
+                    var bullet = (GameObject)Instantiate(Bullet, transform.position, Quaternion.identity);
                     var a = bullet.GetComponent<VelBullet>();
                     a.Speed = speed;
                     a.Angle = lastAngle += delta;
