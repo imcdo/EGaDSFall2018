@@ -81,6 +81,7 @@ namespace Bullet
 
 		private void DestroySelf()
 		{
+			transform.position = new Vector3(9999, 9999);
 			gameObject.SetActive(false);
 
 			var type = GetType();
