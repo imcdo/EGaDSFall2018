@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 50011058516668150}
   - component: {fileID: 114020881170089656}
   - component: {fileID: 58486834441765162}
-  - component: {fileID: 114399748513021388}
+  - component: {fileID: 114881805835367684}
   - component: {fileID: 95910375657971396}
   m_Layer: 11
   m_Name: sitting_KAT
@@ -112,7 +112,7 @@ MonoBehaviour:
   minDistanceFromPlayer: 3
   AIMoveSpeed: 0
   healthOfAI: 100
---- !u!114 &114399748513021388
+--- !u!114 &114881805835367684
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,13 +120,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1790451358366720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f967e3c9bf6617b42ad2bedea444b8f3, type: 3}
+  m_Script: {fileID: 11500000, guid: def1f4572f78256429e6a7a2449c1928, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 1
-  numBullets: 2
-  speed: 1
-  Bullet: {fileID: 11400000, guid: 2a2c79c4736d9c6498e47e6f4ac6ecae, type: 2}
+  numBullets: 16
+  Bullet: {fileID: 11400000, guid: 0ebff277dd3bff64db20ff76add1bec1, type: 2}
+  speed: 5
+  offset: 10
+  changeAngle: 0
 --- !u!212 &212756275850642898
 SpriteRenderer:
   m_ObjectHideFlags: 1
