@@ -20,10 +20,10 @@ public class BasicEnemy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        FollowPlayer();
+        MoveEnemy();
 	}
 
-    void FollowPlayer()
+    void MoveEnemy()
     {
         float distance = Vector3.Distance(target.position, transform.position);
         Vector2 diff = target.position - transform.position;
