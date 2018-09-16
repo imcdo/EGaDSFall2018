@@ -16,4 +16,4 @@ MonoBehaviour:
   DamageAmount: 1
   Cooler: 0
   TimeUntilSwitch: 0.5
-  Acceleration: 10
+  Acceleration: 2

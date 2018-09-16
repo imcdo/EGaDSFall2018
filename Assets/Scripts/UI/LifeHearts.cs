@@ -27,8 +27,7 @@ public class LifeHearts : MonoBehaviour {
 
         int numHearts = life / lifePerHeart + ((life % lifePerHeart == 0)? 0:1);
         float lastHeartOpacity = ((life %lifePerHeart == 0)? lifePerHeart * 1f : life % lifePerHeart * 1f) / lifePerHeart;
-
-        Debug.Log("Heartop: " + lastHeartOpacity + " | NumHearts: " + numHearts);    
+  
 
         int dif = numHearts - prevNumHearts;
         if (dif == 0) { }
@@ -48,7 +47,7 @@ public class LifeHearts : MonoBehaviour {
             for (int i = 0; i < dif; i++)
             {
                 GameObject newHeart = Instantiate(heart);
-                newHeart.transform.parent = transform;
+                newHeart.transform.SetParent(transform);
                 hearts.Push(newHeart);
             }
         }
