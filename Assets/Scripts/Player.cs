@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using CloudCanards.Util;
  
 
@@ -54,6 +55,7 @@ public class Player : MonoBehaviour
 		currenthealth -= amount;
 		if (currenthealth <= 0 && !isDead)
 		{
+            SceneManager.LoadScene("death");
 			isDead = true;
 		}
 
