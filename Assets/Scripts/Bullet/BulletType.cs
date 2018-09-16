@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Bullet
 {
+	[CreateAssetMenu]
 	public class BulletType : ScriptableObject
 	{
 		public Sprite Sprite;
