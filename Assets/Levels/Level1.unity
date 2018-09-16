@@ -182,6 +182,11 @@ Prefab:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 114020881170089656, guid: bdd037577379a554baa1ad93c0d06efe,
+        type: 2}
+      propertyPath: healthOfAI
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdd037577379a554baa1ad93c0d06efe, type: 2}
   m_IsPrefabAsset: 0
@@ -413,6 +418,11 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 8.43
       objectReference: {fileID: 0}
+    - target: {fileID: 114020881170089656, guid: bdd037577379a554baa1ad93c0d06efe,
+        type: 2}
+      propertyPath: healthOfAI
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdd037577379a554baa1ad93c0d06efe, type: 2}
   m_IsPrefabAsset: 0
@@ -466,6 +476,11 @@ Prefab:
     - target: {fileID: 4361054203855560, guid: bdd037577379a554baa1ad93c0d06efe, type: 2}
       propertyPath: m_LocalScale.x
       value: 8.624669
+      objectReference: {fileID: 0}
+    - target: {fileID: 114020881170089656, guid: bdd037577379a554baa1ad93c0d06efe,
+        type: 2}
+      propertyPath: healthOfAI
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdd037577379a554baa1ad93c0d06efe, type: 2}
@@ -703,6 +718,16 @@ Prefab:
     - target: {fileID: 4216884191066410, guid: 31bc2bc85d8dfcf428a65f29a2436553, type: 2}
       propertyPath: m_RootOrder
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114750032831424616, guid: 31bc2bc85d8dfcf428a65f29a2436553,
+        type: 2}
+      propertyPath: NumToKill
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114750032831424616, guid: 31bc2bc85d8dfcf428a65f29a2436553,
+        type: 2}
+      propertyPath: lvl
+      value: Level3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31bc2bc85d8dfcf428a65f29a2436553, type: 2}
