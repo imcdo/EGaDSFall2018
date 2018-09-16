@@ -14,7 +14,7 @@ MonoBehaviour:
   Sprite: {fileID: 21300002, guid: 852183b4e1824704baf2aa10ea732d20, type: 3}
   Speed: 7
   DamageAmount: 10
-  Radius: 0.3
+  Radius: 3
   Cooler: 0
   TimeUntilSwitch: 0.5
   Acceleration: 10
