@@ -32,8 +32,17 @@ public class Player : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		rb.velocity = new Vector3(Input.GetAxis("Horizontal") * speed,
-			Input.GetAxis("Vertical") * speed, 0);
+        Vector3 sp = Camera.main.WorldToViewportPoint(transform.position);
+        Vector3 playerMove;
+        
+		rb.velocity = new Vector3((sp.x < 0f || sp.x > 1f)?
+                (sp.x < 0f)? Mathf.Max(0, Input.GetAxis("Horizontal") * speed) :
+                Mathf.Min(0, Input.GetAxis("Horizontal") * speed)
+                : Input.GetAxis("Horizontal") * speed,
+            (sp.y < 0f || sp.y > 1f) ?
+                (sp.y < 0f) ? Mathf.Max(0, Input.GetAxis("Vertical") * speed) :
+                Mathf.Min(0, Input.GetAxis("Vertical") * speed)
+                : Input.GetAxis("Vertical") * speed, 0);
         float mag = rb.velocity.magnitude;
         anim.SetFloat("mag", mag);
         if (mag != 0)
