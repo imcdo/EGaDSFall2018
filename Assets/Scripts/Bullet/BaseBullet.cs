@@ -86,7 +86,7 @@ namespace Bullet
 			Pool[type].Add(this);
 		}
 
-		public static VelBullet VelBullet(Vector2 position, Sprite sprite, float speed, float angle, int damage)
+		private static VelBullet VelBullet(Vector2 position, Sprite sprite, float speed, float angle, int damage)
 		{
 			if (!Pool.ContainsKey(typeof(VelBullet)))
 				Pool.Add(typeof(VelBullet), new List<BaseBullet>());
@@ -120,7 +120,20 @@ namespace Bullet
 			return bullet;
 		}
 
-		public static SwitchingVelBullet SwitchVelBullet(Vector2 position, Sprite sprite, float speed, float angle,
+		public static BaseBullet Create(BulletType bullet, Vector2 position, float angle)
+		{
+			if (bullet.Cooler)
+			{
+				return SwitchVelBullet(position, bullet.Sprite, bullet.Speed, angle, bullet.DamageAmount,
+					bullet.TimeUntilSwitch, bullet.Acceleration);
+			}
+			else
+			{
+				return VelBullet(position, bullet.Sprite, bullet.Speed, angle, bullet.DamageAmount);
+			}
+		}
+
+		private static SwitchingVelBullet SwitchVelBullet(Vector2 position, Sprite sprite, float speed, float angle,
 			int damage, float timeUntilSwitch = 0.5f, float acceleration = 10f)
 		{
 			if (!Pool.ContainsKey(typeof(SwitchingVelBullet)))
