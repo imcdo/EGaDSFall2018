@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CloudCanards.Util;
 
 public class Player : MonoBehaviour
 {
@@ -30,7 +31,9 @@ public class Player : MonoBehaviour
 	{
 		rb.velocity = new Vector3(Input.GetAxis("Horizontal") * speed,
 			Input.GetAxis("Vertical") * speed, 0);
-	}
+        if (rb.velocity.magnitude != 0)
+            transform.eulerAngles = new Vector3(0, 0, rb.velocity.GetAngle() * Mathf.Rad2Deg - 90);
+    }
 
 	public void damage(int amount)
 	{
