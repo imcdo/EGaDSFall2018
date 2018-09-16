@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 namespace Bullet
 {
@@ -8,14 +11,13 @@ namespace Bullet
 	{
 		protected Rigidbody2D Body;
 		public int DamageAmount = 1;
-		public bool CanAttackPlayer = true;
+		public bool CanDamagePlayer = true;
 
 		private float _deathTimer = 1f;
 
 		private void Awake()
 		{
 			Body = GetComponent<Rigidbody2D>();
-			
 		}
 
 		private void OnTriggerEnter2D(Collider2D other)
@@ -27,7 +29,7 @@ namespace Bullet
 			}
 			else if (layer == LayerMask.NameToLayer("Enemy"))
 			{
-				OnHitEnemy();
+				OnHitEnemy(other);
 			}
 			else if (layer == LayerMask.NameToLayer("Shield"))
 			{
@@ -38,19 +40,22 @@ namespace Bullet
 		private void OnHitPlayer(Collider2D other)
 		{
 			var player = other.GetComponent<Player>();
-			if (player != null)
+			if (player != null && CanDamagePlayer)
 				player.damage(DamageAmount);
-			Destroy(gameObject);
+			DestroySelf();
 		}
 
-		private void OnHitEnemy()
+		private void OnHitEnemy(Collider2D other)
 		{
-			Destroy(gameObject);
+			var enemy = other.GetComponent<BasicEnemy>();
+			if (enemy != null && !CanDamagePlayer)
+				enemy.DamageEnemy(DamageAmount);
+			DestroySelf();
 		}
 
 		protected virtual void OnHitShield()
 		{
-			CanAttackPlayer = !CanAttackPlayer;
+			CanDamagePlayer = !CanDamagePlayer;
 		}
 
 		protected virtual void Update()
@@ -60,7 +65,7 @@ namespace Bullet
 				return;
 			_deathTimer -= Time.deltaTime;
 			if (_deathTimer <= 0)
-				Destroy(gameObject);
+				DestroySelf();
 		}
 
 		private void Reset()
@@ -70,5 +75,88 @@ namespace Bullet
 			GetComponent<Rigidbody2D>().useFullKinematicContacts = true;
 			gameObject.layer = LayerMask.NameToLayer("Bullet");
 		}
+
+		private void DestroySelf()
+		{
+			gameObject.SetActive(false);
+
+			var type = GetType();
+			if (!Pool.ContainsKey(type))
+				Pool.Add(type, new List<BaseBullet>());
+			Pool[type].Add(this);
+		}
+
+		public static VelBullet VelBullet(Vector2 position, Sprite sprite, float speed, float angle, int damage)
+		{
+			if (!Pool.ContainsKey(typeof(VelBullet)))
+				Pool.Add(typeof(VelBullet), new List<BaseBullet>());
+			var list = Pool[typeof(VelBullet)];
+
+			VelBullet bullet;
+			if (list.Count == 0)
+			{
+				var obj = new GameObject("Bullet", typeof(SpriteRenderer), typeof(CircleCollider2D),
+					typeof(Rigidbody2D), typeof(VelBullet));
+				obj.transform.position = position;
+				obj.layer = LayerMask.NameToLayer("Bullet");
+
+				var body = obj.GetComponent<Rigidbody2D>();
+				body.gravityScale = 0f;
+
+				bullet = obj.GetComponent<VelBullet>();
+			}
+			else
+			{
+				bullet = (VelBullet) list[list.Count - 1];
+				bullet.gameObject.SetActive(true);
+				list.RemoveAt(list.Count - 1);
+			}
+
+			bullet.GetComponent<SpriteRenderer>().sprite = sprite;
+			bullet.Speed = speed;
+			bullet.Angle = angle;
+			bullet.DamageAmount = damage;
+
+			return bullet;
+		}
+
+		public static SwitchingVelBullet SwitchVelBullet(Vector2 position, Sprite sprite, float speed, float angle,
+			int damage, float timeUntilSwitch = 0.5f, float acceleration = 10f)
+		{
+			if (!Pool.ContainsKey(typeof(SwitchingVelBullet)))
+				Pool.Add(typeof(SwitchingVelBullet), new List<BaseBullet>());
+			var list = Pool[typeof(SwitchingVelBullet)];
+
+			SwitchingVelBullet bullet;
+			if (list.Count == 0)
+			{
+				var obj = new GameObject("Bullet", typeof(SpriteRenderer), typeof(CircleCollider2D),
+					typeof(Rigidbody2D), typeof(SwitchingVelBullet));
+				obj.transform.position = position;
+				obj.layer = LayerMask.NameToLayer("Bullet");
+
+				var body = obj.GetComponent<Rigidbody2D>();
+				body.gravityScale = 0f;
+
+				bullet = obj.GetComponent<SwitchingVelBullet>();
+			}
+			else
+			{
+				bullet = (SwitchingVelBullet) list[list.Count - 1];
+				bullet.gameObject.SetActive(true);
+				list.RemoveAt(list.Count - 1);
+			}
+
+			bullet.GetComponent<SpriteRenderer>().sprite = sprite;
+			bullet.Speed = speed;
+			bullet.Angle = angle;
+			bullet.DamageAmount = damage;
+			bullet.TimeUntilSwitch = timeUntilSwitch;
+			bullet.Acceleration = acceleration;
+
+			return bullet;
+		}
+
+		private static readonly Dictionary<Type, List<BaseBullet>> Pool = new Dictionary<Type, List<BaseBullet>>();
 	}
 }
