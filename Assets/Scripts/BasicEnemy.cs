@@ -42,7 +42,6 @@ public class BasicEnemy : MonoBehaviour {
     public void DamageEnemy(int damage)
     {
         healthOfAI -= damage;
-        Debug.Log("ai hit, life is " + healthOfAI);
         if (healthOfAI <= 0)
         {
             Destroy(gameObject);
