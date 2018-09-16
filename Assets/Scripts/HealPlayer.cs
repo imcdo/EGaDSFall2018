@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealPlayer: MonoBehaviour {
+public class HealPlayer : MonoBehaviour
+{
     [SerializeField] int health = 20;
     GameObject pl;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         pl = Player.Instance.gameObject;
-	}
-	
-	// Update is called once per frame
-	void Update () { 
-        
-    
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+
     }
 
     void Heal()
@@ -22,14 +25,13 @@ public class HealPlayer: MonoBehaviour {
         Destroy(gameObject);
 
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("player :" + pl + " collision: " + collision.gameObject);
+        Debug.Log("yes");
         if (collision.gameObject.transform.Equals(pl.transform))
         {
-            Debug.Log("here");
             Heal();
         }
     }
-        
+
 }
