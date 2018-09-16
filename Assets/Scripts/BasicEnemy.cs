@@ -46,6 +46,7 @@ public class BasicEnemy : MonoBehaviour {
         healthOfAI -= damage;
         if (healthOfAI <= 0)
         {
+            GameObject.FindGameObjectWithTag("SM").GetComponent<SceneChanger>().NumToKill--;
             Destroy(gameObject);
         }
     }

@@ -22,7 +22,7 @@ public class SceneChanger : MonoBehaviour {
 
     public void CheckLevelOver()
     {
-        if (NumToKill == 0)
+        if (NumToKill <= 0)
         {
             SceneManager.LoadScene("Level" + level);
         }
