@@ -17,7 +17,7 @@ public class SceneChanger : MonoBehaviour {
 	}
     public void ChangeLevel(string Level)
     {
-        SceneManager.LoadScene("Victory");
+        SceneManager.LoadScene(Level);
     }
 
     public void CheckLevelOver()
