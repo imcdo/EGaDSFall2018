@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Bullet
@@ -96,9 +95,7 @@ namespace Bullet
 			if (list.Count == 0)
 			{
 				var obj = new GameObject("Bullet", typeof(SpriteRenderer), typeof(CircleCollider2D),
-					typeof(Rigidbody2D), typeof(VelBullet));
-				obj.transform.position = position;
-				obj.layer = LayerMask.NameToLayer("Bullet");
+					typeof(Rigidbody2D), typeof(VelBullet)) {layer = LayerMask.NameToLayer("Bullet")};
 
 				var body = obj.GetComponent<Rigidbody2D>();
 				body.gravityScale = 0f;
@@ -112,10 +109,12 @@ namespace Bullet
 				list.RemoveAt(list.Count - 1);
 			}
 
+			bullet.transform.position = position;
 			bullet.GetComponent<SpriteRenderer>().sprite = sprite;
 			bullet.Speed = speed;
 			bullet.Angle = angle;
 			bullet.DamageAmount = damage;
+			bullet._deathTimer = 1f;
 
 			return bullet;
 		}
@@ -127,10 +126,8 @@ namespace Bullet
 				return SwitchVelBullet(position, bullet.Sprite, bullet.Speed, angle, bullet.DamageAmount,
 					bullet.TimeUntilSwitch, bullet.Acceleration);
 			}
-			else
-			{
-				return VelBullet(position, bullet.Sprite, bullet.Speed, angle, bullet.DamageAmount);
-			}
+
+			return VelBullet(position, bullet.Sprite, bullet.Speed, angle, bullet.DamageAmount);
 		}
 
 		private static SwitchingVelBullet SwitchVelBullet(Vector2 position, Sprite sprite, float speed, float angle,
@@ -144,9 +141,7 @@ namespace Bullet
 			if (list.Count == 0)
 			{
 				var obj = new GameObject("Bullet", typeof(SpriteRenderer), typeof(CircleCollider2D),
-					typeof(Rigidbody2D), typeof(SwitchingVelBullet));
-				obj.transform.position = position;
-				obj.layer = LayerMask.NameToLayer("Bullet");
+					typeof(Rigidbody2D), typeof(SwitchingVelBullet)) {layer = LayerMask.NameToLayer("Bullet")};
 
 				var body = obj.GetComponent<Rigidbody2D>();
 				body.gravityScale = 0f;
@@ -160,12 +155,14 @@ namespace Bullet
 				list.RemoveAt(list.Count - 1);
 			}
 
+			bullet.transform.position = position;
 			bullet.GetComponent<SpriteRenderer>().sprite = sprite;
 			bullet.Speed = speed;
 			bullet.Angle = angle;
 			bullet.DamageAmount = damage;
 			bullet.TimeUntilSwitch = timeUntilSwitch;
 			bullet.Acceleration = acceleration;
+			bullet._deathTimer = 1f;
 
 			return bullet;
 		}
