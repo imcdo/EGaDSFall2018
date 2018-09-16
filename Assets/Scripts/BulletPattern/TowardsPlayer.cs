@@ -29,17 +29,16 @@ namespace BulletPattern
         // Update is called once per frame
         void Update()
         {
-            var p = Player.Instance;
-            if (p != null)
-            {
-                Vector2 pos = p.transform.position;
-            }
+            var p = Player.Instance.transform;
+           
+            Vector2 pos = p.position;
+            
            
             Vector2 enemyPosition = gameObject.transform.position;
      
             Vector2 diff = enemyPosition - pos;
 
-            float diffAngle = diff.GetAngle() * Mathf.Rad2Deg;
+            float diffAngle = diff.GetAngle() * Mathf.Rad2Deg + 180;
 
             float delta = 10.0f;
             float angleToPlayer = Mathf.Atan2(p.transform.position.y, p.transform.position.x) * Mathf.Rad2Deg;
@@ -48,6 +47,7 @@ namespace BulletPattern
             if (counter > duration)
             {
                 counter -= duration;
+                /*
                 if (diffAngle > 360)
                 {
                     diffAngle -= 360;
@@ -55,7 +55,7 @@ namespace BulletPattern
                 if (diffAngle < 0)
                 {
                     diffAngle += 360;
-                }
+                } */
 
                 BaseBullet.Create(Bullet, transform.position, diffAngle);
                 
