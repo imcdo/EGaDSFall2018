@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using UnityEngine;
+﻿using UnityEngine;
 
 // ReSharper disable once CheckNamespace
 namespace CloudCanards.Util
