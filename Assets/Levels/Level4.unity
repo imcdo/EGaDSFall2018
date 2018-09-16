@@ -674,7 +674,7 @@ Prefab:
     - target: {fileID: 114750032831424616, guid: 31bc2bc85d8dfcf428a65f29a2436553,
         type: 2}
       propertyPath: NumToKill
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114750032831424616, guid: 31bc2bc85d8dfcf428a65f29a2436553,
         type: 2}
