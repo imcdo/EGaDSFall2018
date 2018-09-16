@@ -7,6 +7,7 @@ public class BasicEnemy : MonoBehaviour {
     [SerializeField] float minDistanceFromPlayer = 3f;
     [SerializeField] float AIMoveSpeed = 10;
     public int healthOfAI = 20;
+    Animator anim;
     Rigidbody2D rb;
     Transform target;
 
@@ -14,6 +15,7 @@ public class BasicEnemy : MonoBehaviour {
 	void Start () {
         target = Player.Instance.gameObject.transform;
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -25,7 +27,7 @@ public class BasicEnemy : MonoBehaviour {
     {
         float distance = Vector3.Distance(target.position, transform.position);
         Vector2 diff = target.position - transform.position;
-        transform.eulerAngles = new Vector3(0, 0,diff.GetAngle() * Mathf.Rad2Deg);
+        transform.eulerAngles = new Vector3(0, 0,diff.GetAngle() * Mathf.Rad2Deg - 90);
         if (distance > minDistanceFromPlayer)
         {
             rb.velocity = diff.normalized * AIMoveSpeed;
@@ -34,6 +36,7 @@ public class BasicEnemy : MonoBehaviour {
         {
             rb.velocity = new Vector3(0, 0, 0);
         }
+        anim.SetFloat("mag", rb.velocity.magnitude);
     }
 
     public void DamageEnemy(int damage)
