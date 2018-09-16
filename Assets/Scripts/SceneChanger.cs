@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Bullet;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,6 +18,7 @@ public class SceneChanger : MonoBehaviour {
 	}
     public void ChangeLevel(string Level)
     {
+	    BaseBullet.Pool.Clear();
         SceneManager.LoadScene(Level);
     }
 
