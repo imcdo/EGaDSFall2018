@@ -11,10 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7abede6dad1049a99c9d3569e501113a, type: 3}
   m_Name: BigKatBullet
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: cfea9711e5174674c8da231a6f5e51ae, type: 3}
-  Speed: 4
-  DamageAmount: 1
-  Radius: 0.1
+  Sprite: {fileID: 21300002, guid: 852183b4e1824704baf2aa10ea732d20, type: 3}
+  Speed: 7
+  DamageAmount: 10
+  Radius: 0.3
   Cooler: 0
   TimeUntilSwitch: 0.5
   Acceleration: 10
