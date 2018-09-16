@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7abede6dad1049a99c9d3569e501113a, type: 3}
-  m_Name: BigBullet
+  m_Name: YaBoisBullet
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: cfea9711e5174674c8da231a6f5e51ae, type: 3}
-  Speed: 4
-  DamageAmount: 1
+  Sprite: {fileID: 21300002, guid: 24b7d6aae959e6a49a88dc74003087c9, type: 3}
+  Speed: 5.71
+  DamageAmount: 287
   Radius: 0.1
-  Cooler: 0
+  Cooler: 1
   TimeUntilSwitch: 0.5
   Acceleration: 10
