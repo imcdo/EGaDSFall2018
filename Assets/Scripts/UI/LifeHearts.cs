@@ -47,7 +47,6 @@ public class LifeHearts : MonoBehaviour {
             //gained life
             for (int i = 0; i < dif; i++)
             {
-                Debug.Log(dif + "diff" + i);
                 GameObject newHeart = Instantiate(heart);
                 newHeart.transform.parent = transform;
                 hearts.Push(newHeart);
