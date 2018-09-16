@@ -182,24 +182,49 @@ Prefab:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 114020881170089656, guid: bdd037577379a554baa1ad93c0d06efe,
+        type: 2}
+      propertyPath: healthOfAI
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdd037577379a554baa1ad93c0d06efe, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &420403095 stripped
+--- !u!1 &519420028
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1486294211443890, guid: 42b7174d75ca0084dba224f1a381c86d,
-    type: 2}
-  m_PrefabInternal: {fileID: 1314973060}
---- !u!82 &420403102
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 519420032}
+  - component: {fileID: 519420031}
+  - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &519420029
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+--- !u!82 &519420030
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 420403095}
+  m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6fec753cdfba5cf449b7e485e1b7f8cb, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1febb693a652fbb47bad052e055a0282, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -209,7 +234,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0.9476843
+  MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -285,30 +310,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &519420028
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 519420032}
-  - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -413,6 +414,11 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 8.43
       objectReference: {fileID: 0}
+    - target: {fileID: 114020881170089656, guid: bdd037577379a554baa1ad93c0d06efe,
+        type: 2}
+      propertyPath: healthOfAI
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdd037577379a554baa1ad93c0d06efe, type: 2}
   m_IsPrefabAsset: 0
@@ -466,6 +472,11 @@ Prefab:
     - target: {fileID: 4361054203855560, guid: bdd037577379a554baa1ad93c0d06efe, type: 2}
       propertyPath: m_LocalScale.x
       value: 8.624669
+      objectReference: {fileID: 0}
+    - target: {fileID: 114020881170089656, guid: bdd037577379a554baa1ad93c0d06efe,
+        type: 2}
+      propertyPath: healthOfAI
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdd037577379a554baa1ad93c0d06efe, type: 2}
@@ -703,6 +714,16 @@ Prefab:
     - target: {fileID: 4216884191066410, guid: 31bc2bc85d8dfcf428a65f29a2436553, type: 2}
       propertyPath: m_RootOrder
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114750032831424616, guid: 31bc2bc85d8dfcf428a65f29a2436553,
+        type: 2}
+      propertyPath: NumToKill
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114750032831424616, guid: 31bc2bc85d8dfcf428a65f29a2436553,
+        type: 2}
+      propertyPath: lvl
+      value: Level3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31bc2bc85d8dfcf428a65f29a2436553, type: 2}

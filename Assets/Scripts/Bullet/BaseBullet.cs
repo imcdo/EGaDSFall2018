@@ -126,8 +126,9 @@ namespace Bullet
 			}
 
 			bullet.transform.position = position;
+			bullet.transform.localScale = new Vector3(radius, radius, 1f);
 			bullet.GetComponent<SpriteRenderer>().sprite = sprite;
-			bullet.GetComponent<CircleCollider2D>().radius = radius;
+			bullet.GetComponent<CircleCollider2D>().radius = 0.1f;
             //bullet.GetComponent<Transform>().localScale = bullet.GetComponent<Transform>().localScale * radius * 10;
 			bullet.CanDamagePlayer = true;
 			bullet.Speed = speed;
@@ -166,8 +167,9 @@ namespace Bullet
 			}
 
 			bullet.transform.position = position;
+			bullet.transform.localScale = new Vector3(radius, radius, 1f);
 			bullet.GetComponent<SpriteRenderer>().sprite = sprite;
-			bullet.GetComponent<CircleCollider2D>().radius = radius;
+			bullet.GetComponent<CircleCollider2D>().radius = 0.1f;
 			bullet.CanDamagePlayer = true;
 			bullet.Speed = speed;
 			bullet.Angle = angle;
@@ -179,6 +181,6 @@ namespace Bullet
 			return bullet;
 		}
 
-		private static readonly Dictionary<Type, List<BaseBullet>> Pool = new Dictionary<Type, List<BaseBullet>>();
+		public static readonly Dictionary<Type, List<BaseBullet>> Pool = new Dictionary<Type, List<BaseBullet>>();
 	}
 }
