@@ -11,6 +11,8 @@ public class Shield : MonoBehaviour {
     public float reflectMeeter = 20f;
     float reflectMeeterMax;
     bool mouseClicked = false;
+    [SerializeField] Sprite block;
+    [SerializeField] Sprite down;
     [SerializeField] float rechargeRate = 1;
     [SerializeField] float depleateRate = 1;
 
@@ -38,12 +40,14 @@ public class Shield : MonoBehaviour {
 
             //child.transform.tag = "Reflective";
             child.GetComponent<BoxCollider2D>().enabled = true;
+            child.GetComponent<SpriteRenderer>().sprite = block;
             
         }
         else
         {
             //child.transform.tag = "Untagged";
             child.GetComponent<BoxCollider2D>().enabled = false;
+            child.GetComponent<SpriteRenderer>().sprite = down;
         }
         mouse_pos = Input.mousePosition;
         mouse_pos.z = 0;

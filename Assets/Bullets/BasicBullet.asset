@@ -11,9 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7abede6dad1049a99c9d3569e501113a, type: 3}
   m_Name: BasicBullet
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 00e662f73c8d2e7409f78b05663f643f, type: 3}
   Speed: 4
   DamageAmount: 1
-  Cooler: 0
+  Radius: 0.1
+  Cooler: 1
   TimeUntilSwitch: 0.5
-  Acceleration: 10
+  Acceleration: 2
