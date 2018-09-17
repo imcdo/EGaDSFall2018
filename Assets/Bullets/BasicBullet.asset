@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7abede6dad1049a99c9d3569e501113a, type: 3}
   m_Name: BasicBullet
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: cfea9711e5174674c8da231a6f5e51ae, type: 3}
+  Sprite: {fileID: 21300002, guid: 00e662f73c8d2e7409f78b05663f643f, type: 3}
   Speed: 4
   DamageAmount: 1
   Radius: 1
